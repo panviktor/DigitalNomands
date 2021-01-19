@@ -18,6 +18,8 @@ final class MainViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseID)
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.prefetchDataSource = self
+        title = "Digital Nomands"
         setupColorSchema()
         viewModel.fetchNextPageIfPossible()
         binding()
@@ -29,6 +31,7 @@ final class MainViewController: UITableViewController {
             .sink { [weak self] items in
                 guard let self = self else { return }
                 self.dataSource = items.articles
+//                self.title = "\(items.page) of 5"
                 self.tableView.reloadData()
             }
             .store(in: &subscriptions)
@@ -50,6 +53,8 @@ final class MainViewController: UITableViewController {
                 }
             }
             .store(in: &subscriptions)
+        
+       
     }
 }
 
@@ -68,6 +73,12 @@ extension MainViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+extension MainViewController: UITableViewDataSourcePrefetching {
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    
+  }
 }
 
 //MARK: - GUI

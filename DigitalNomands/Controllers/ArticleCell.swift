@@ -21,14 +21,40 @@ class ArticleCell: UITableViewCell {
     }()
     
     private let articleTitle: UILabel = {
-        let label = UILabel(text: "¿Estás buscando nuevos fondos de pantalla para modificar el aspecto de tu móvil? Te recomendamos los mejores sitios para descargar fondos de calidad.", font: .laoSangamMN20)
+        let label = UILabel(text: "### #### ###### #### ##", font: .laoSangamMN20)
         label.numberOfLines = 3
         return label
     }()
     
     private let articleImageView = UIImageView()
-    private let publishedAtLabel = UILabel(text: "2021-01-19 10:02", font: .avenir15)
-    private let authorLabel = UILabel(text: "Sergio Asenjo", font: .laoSangamMN18)
+    private let publishedAtLabel = UILabel(text: "####-##-## ##:##", font: .avenir15)
+    private let authorLabel = UILabel(text: "####### #####", font: .laoSangamMN18)
+    
+    private let blurView: UIView = {
+        let view = UIView(frame: .zero)
+        view.layer.cornerRadius = 10
+        view.clipsToBounds = true
+        
+        if !UIAccessibility.isReduceTransparencyEnabled {
+            view.backgroundColor = .clear
+            let blurEffect = UIBlurEffect(style: .light)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = view.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            blurEffectView.alpha = 0.5
+            view.addSubview(blurEffectView)
+        } else {
+            view.backgroundColor = .black
+        }
+        
+        return view
+    }()
+    
+    private let indicatorView: UIActivityIndicatorView = {
+        let indicatorView = UIActivityIndicatorView()
+        indicatorView.isHidden = true
+        return indicatorView
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,16 +66,23 @@ class ArticleCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with article: Article) {
-        articleTitle.text = article.title
-        publishedAtLabel.text = article.normalPublishedDate
-        authorLabel.text = article.author
-        articleImageView.sd_setImage(with: URL(string: (article.urlToImage ?? "")))
-        articleImageView.contentMode = .scaleAspectFit
+    func configure(with article: Article?) {
+        if let article = article {
+            articleTitle.text = article.title
+            publishedAtLabel.text = article.normalPublishedDate
+            authorLabel.text = article.author
+            articleImageView.sd_setImage(with: URL(string: (article.urlToImage ?? "")))
+            articleImageView.contentMode = .scaleAspectFit
+            blurView.isHidden = true
+            indicatorView.stopAnimating()
+        } else {
+            blurView.isHidden = false
+            indicatorView.startAnimating()
+        }
     }
-    
     override func prepareForReuse() {
         articleImageView.image = nil
+        configure(with: nil)
     }
 }
 
@@ -60,6 +93,8 @@ extension ArticleCell {
         articleImageView.translatesAutoresizingMaskIntoConstraints = false
         articleTitle.translatesAutoresizingMaskIntoConstraints = false
         publishedAtLabel.translatesAutoresizingMaskIntoConstraints = false
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorView.translatesAutoresizingMaskIntoConstraints = false
         articleImageView.backgroundColor = .clear
         
         addSubview(cardView)
@@ -97,6 +132,21 @@ extension ArticleCell {
             horizontalStackView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -2.5),
             horizontalStackView.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 5),
             horizontalStackView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -5.5),
+        ])
+        
+        cardView.addSubview(blurView)
+        NSLayoutConstraint.activate([
+            blurView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            blurView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
+            blurView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2.5),
+            blurView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2.5),
+            blurView.heightAnchor.constraint(equalToConstant: 125),
+        ])
+        
+        blurView.addSubview(indicatorView)
+        NSLayoutConstraint.activate([
+            indicatorView.centerXAnchor.constraint(equalTo: blurView.centerXAnchor),
+            indicatorView.centerYAnchor.constraint(equalTo: blurView.centerYAnchor)
         ])
     }
 }
