@@ -10,12 +10,14 @@ import Combine
 
 final class MainViewController: UITableViewController {
     private var viewModel = MainViewViewModel()
-  
+    
     private var dataSource: [Article] = [] {
         didSet {
             tableView.reloadData()
         }
     }
+    
+    var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +29,13 @@ final class MainViewController: UITableViewController {
     }
     
     private func binding() {
-
-       
+        viewModel.$state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                self?.dataSource = items.articles
+                self?.tableView.reloadData()
+            }
+            .store(in: &subscriptions)
     }
 }
 
