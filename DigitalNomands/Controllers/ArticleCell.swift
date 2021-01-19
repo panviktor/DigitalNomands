@@ -42,9 +42,9 @@ class ArticleCell: UITableViewCell {
     
     func configure(with article: Article) {
         articleTitle.text = article.title
-        publishedAtLabel.text = article.publishedAt.dateAndTimetoString()
+        publishedAtLabel.text = article.normalPublishedDate
         authorLabel.text = article.author
-        articleImageView.sd_setImage(with: URL(string: (article.urlToImage)))
+        articleImageView.sd_setImage(with: URL(string: (article.urlToImage ?? "")))
     }
     
     override func prepareForReuse() {

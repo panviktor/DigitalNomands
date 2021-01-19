@@ -17,10 +17,10 @@ extension Date {
 }
 
 extension Date {
-    func dateAndTimetoString(format: String = "yyyy-MM-dd HH:mm") -> String {
+    static func dateAndTimetoString(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
-        formatter.dateFormat = format
-        return formatter.string(from: self)
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        return formatter.string(from: date)
     }
 }
