@@ -45,6 +45,7 @@ class ArticleCell: UITableViewCell {
         publishedAtLabel.text = article.normalPublishedDate
         authorLabel.text = article.author
         articleImageView.sd_setImage(with: URL(string: (article.urlToImage ?? "")))
+        articleImageView.contentMode = .scaleAspectFit
     }
     
     override func prepareForReuse() {
@@ -59,7 +60,7 @@ extension ArticleCell {
         articleImageView.translatesAutoresizingMaskIntoConstraints = false
         articleTitle.translatesAutoresizingMaskIntoConstraints = false
         publishedAtLabel.translatesAutoresizingMaskIntoConstraints = false
-        articleImageView.backgroundColor = .orange
+        articleImageView.backgroundColor = .clear
         
         addSubview(cardView)
         NSLayoutConstraint.activate([

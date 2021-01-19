@@ -10,12 +10,7 @@ import Combine
 
 final class MainViewController: UITableViewController {
     private var viewModel = MainViewViewModel()
-    
-    private var dataSource: [Article] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private var dataSource: [Article] = []
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -32,14 +27,33 @@ final class MainViewController: UITableViewController {
         viewModel.$state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] items in
-                self?.dataSource = items.articles
-                self?.tableView.reloadData()
+                guard let self = self else { return }
+                self.dataSource = items.articles
+                self.tableView.reloadData()
+            }
+            .store(in: &subscriptions)
+        
+        viewModel.$status
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] status in
+                guard let self = self else { return }
+                switch status  {
+                case .satisfied:
+                    break
+                case .unsatisfied:
+                    //FIXME: - add element and button
+                    self.tableView.reloadData()
+                case .requiresConnection:
+                    break
+                @unknown default:
+                    break
+                }
             }
             .store(in: &subscriptions)
     }
 }
 
-//MARK: - DataSource
+//MARK: - DataSource & Delegate
 extension MainViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataSource.count
@@ -50,11 +64,10 @@ extension MainViewController {
         cell.configure(with: dataSource[indexPath.row])
         return cell
     }
-}
-
-//MARK: - Delegate
-extension MainViewController {
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 //MARK: - GUI
@@ -65,8 +78,6 @@ extension MainViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
     }
 }
-
-
 
 // MARK: - SwiftUI
 import SwiftUI

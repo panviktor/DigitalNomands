@@ -17,12 +17,7 @@ final class MainViewViewModel: ObservableObject {
     }
     
     private let defaults = UserDefaults.standard
-    @Published private(set) var state = State() {
-        didSet {
-            print(state.articles.first)
-        }
-    }
-    
+    @Published private(set) var state = State()
     @Published private(set) var status: NWPath.Status = .satisfied
     
     private var downloadWasSuccessful: Bool {
