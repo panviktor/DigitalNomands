@@ -12,18 +12,23 @@ class ArticleCell: UITableViewCell {
     static var reuseID: String = "ArticleCell"
     
     //First layer
-    let cardView: UIView = {
+    private let cardView: UIView = {
         let view = UIView(frame: .zero)
-        view.backgroundColor = .gray
+        view.backgroundColor = #colorLiteral(red: 0.9098562598, green: 0.9044476748, blue: 0.914013803, alpha: 1)
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         return view
     }()
     
-    let articleImageView = UIImageView()
-    let articleTitle = UILabel(text: "¿Estás buscando nuevos fondos de pantalla para modificar el aspecto de tu móvil? Te recomendamos los mejores sitios para descargar fondos de calidad.", font: .laoSangamMN20)
-    let publishedAtLabel = UILabel(text: "2021-01-19 10:02", font: .laoSangamMN18)
+    private let articleTitle: UILabel = {
+        let label = UILabel(text: "¿Estás buscando nuevos fondos de pantalla para modificar el aspecto de tu móvil? Te recomendamos los mejores sitios para descargar fondos de calidad.", font: .laoSangamMN20)
+        label.numberOfLines = 3
+        return label
+    }()
     
+    private let articleImageView = UIImageView()
+    private let publishedAtLabel = UILabel(text: "2021-01-19 10:02", font: .avenir15)
+    private let authorLabel = UILabel(text: "Sergio Asenjo", font: .laoSangamMN18)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -38,6 +43,7 @@ class ArticleCell: UITableViewCell {
     func configure(with article: Article) {
         articleTitle.text = article.title
         publishedAtLabel.text = article.publishedAt.dateAndTimetoString()
+        authorLabel.text = article.author
         articleImageView.sd_setImage(with: URL(string: (article.urlToImage)))
     }
     
@@ -59,39 +65,38 @@ extension ArticleCell {
         NSLayoutConstraint.activate([
             cardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             cardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
-            cardView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
+            cardView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2.5),
+            cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2.5),
             cardView.heightAnchor.constraint(equalToConstant: 125),
         ])
         
+        cardView.addSubview(articleImageView)
+        NSLayoutConstraint.activate([
+            articleImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 5),
+            articleImageView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 5),
+            articleImageView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -5),
+            articleImageView.heightAnchor.constraint(equalToConstant: 120),
+            articleImageView.widthAnchor.constraint(equalToConstant: 120),
+        ])
         
+        cardView.addSubview(articleTitle)
+        NSLayoutConstraint.activate([
+            articleTitle.topAnchor.constraint(equalTo: articleImageView.topAnchor, constant: 2.5),
+            articleTitle.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 2.5),
+            articleTitle.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -2.5),
+        ])
         
+        let horizontalStackView = UIStackView(arrangedSubviews: [publishedAtLabel, authorLabel], axis: .horizontal, spacing: 10)
+        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+        horizontalStackView.alignment = .firstBaseline
+        cardView.addSubview(horizontalStackView)
         
-        
-        //        addSubview(articleImageView)
-        ////        addSubview(articleTitle)
-        ////        addSubview(publishedAtLabel)
-        //
-        //        NSLayoutConstraint.activate([
-        //            articleImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-        //            articleImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-        //            articleImageView.heightAnchor.constraint(equalToConstant: 190),
-        //            articleImageView.widthAnchor.constraint(equalToConstant: 190)
-        //        ])
-        
-        //        NSLayoutConstraint.activate([
-        //            friendName.topAnchor.constraint(equalTo: self.topAnchor, constant: 12),
-        //            friendName.leadingAnchor.constraint(equalTo: friendImageView.trailingAnchor, constant: 16),
-        //            friendName.trailingAnchor.constraint(equalTo: gradientView.leadingAnchor, constant: 16)
-        //        ])
-        //
-        //        NSLayoutConstraint.activate([
-        //            publishedAtLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -12),
-        //            publishedAtLabel.leadingAnchor.constraint(equalTo: friendImageView.trailingAnchor, constant: 16),
-        //            publishedAtLabel.trailingAnchor.constraint(equalTo: gradientView.leadingAnchor, constant: 16)
-        //        ])
-        
-        
+        NSLayoutConstraint.activate([
+            horizontalStackView.topAnchor.constraint(greaterThanOrEqualTo: articleTitle.bottomAnchor, constant: 2.5),
+            horizontalStackView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -2.5),
+            horizontalStackView.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 5),
+            horizontalStackView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -5.5),
+        ])
     }
 }
 

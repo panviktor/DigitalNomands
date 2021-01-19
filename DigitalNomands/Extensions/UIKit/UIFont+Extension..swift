@@ -8,6 +8,10 @@
 import UIKit
 
 extension UIFont {
+    static var avenir15: UIFont? {
+        return UIFont.init(name: "avenir", size: 15)
+    }
+    
     static var avenir20: UIFont? {
         return UIFont.init(name: "avenir", size: 20)
     }
