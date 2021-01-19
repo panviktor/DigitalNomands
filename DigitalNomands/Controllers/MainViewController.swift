@@ -10,9 +10,14 @@ import UIKit
 final class MainViewController: UITableViewController {
     private var viewModel = MainViewViewModel()
     
+    let moc: [Article] = [Article.mocArticle, Article.mocArticle, Article.mocArticle, Article.mocArticle, Article.mocArticle]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseID)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
+        
         setupColorSchema()
         viewModel.fetchNextPageIfPossible()
         binding()
@@ -26,22 +31,19 @@ final class MainViewController: UITableViewController {
 //MARK: - DataSource
 extension MainViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        moc.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseID, for: indexPath) as! ArticleCell
-        cell.textLabel?.text = String(indexPath.row)
+        cell.configure(with: moc[indexPath.row])
         return cell
     }
-    
-    
 }
 
 //MARK: - Delegate
 extension MainViewController {
 
-    
 }
 
 //MARK: - GUI
