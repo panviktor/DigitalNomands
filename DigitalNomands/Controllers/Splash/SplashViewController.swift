@@ -19,31 +19,16 @@ class SplashViewController: UIViewController {
         animationView.animation = Animation.named("startingCat")
         return animationView
     }()
-    
-    let circleView: UIView  = {
-        let view = UIView()
-        view.layer.masksToBounds = true
-        view.backgroundColor = .red
-        return view
-    }()
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(#line, #function, "Splash")
         view.backgroundColor = .clear
         setupConstraints()
-        circleView.layer.cornerRadius = circleView.frame.width / 2
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        circleView.layer.cornerRadius = circleView.frame.width / 2
     }
     
     func startAnimation() {
         animationView.play()
     }
-    
 }
 
 // MARK: - Setup constraints
@@ -51,12 +36,10 @@ extension SplashViewController {
     private func setupConstraints() {
         gradientView.translatesAutoresizingMaskIntoConstraints = false
         animationView.translatesAutoresizingMaskIntoConstraints = false
-        circleView.translatesAutoresizingMaskIntoConstraints = false
         
         gradientView.backgroundColor = .black
         view.addSubview(gradientView)
         gradientView.addSubview(animationView)
-        gradientView.addSubview(circleView)
         
         NSLayoutConstraint.activate([
             gradientView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -71,13 +54,7 @@ extension SplashViewController {
             animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-        NSLayoutConstraint.activate([
-            circleView.centerXAnchor.constraint(equalTo: gradientView.centerXAnchor),
-            circleView.centerYAnchor.constraint(equalTo: gradientView.centerYAnchor),
-            circleView.widthAnchor.constraint(equalToConstant: 90),
-            circleView.heightAnchor.constraint(equalToConstant: 90)
-        ])
+
     }
 }
 

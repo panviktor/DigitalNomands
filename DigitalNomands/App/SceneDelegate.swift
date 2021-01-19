@@ -17,7 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = MainViewController()
+        let navigationController = UINavigationController()
+        let mainView = MainViewController()
+        navigationController.viewControllers = [mainView]
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         //MARK: - Loading animation main point

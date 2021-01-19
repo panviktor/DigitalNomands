@@ -19,6 +19,13 @@
 		778FCD7C25B587F10073D730 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCD7B25B587F10073D730 /* GradientView.swift */; };
 		778FCD8125B589BC0073D730 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCD8025B589BC0073D730 /* SplashPresenter.swift */; };
 		778FCD8A25B5B26A0073D730 /* startingCat.json in Resources */ = {isa = PBXBuildFile; fileRef = 778FCD8925B5B26A0073D730 /* startingCat.json */; };
+		778FCD9A25B629280073D730 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCD9925B629280073D730 /* MainViewViewModel.swift */; };
+		778FCD9D25B62A710073D730 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCD9C25B62A710073D730 /* News.swift */; };
+		778FCDA225B62AA60073D730 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCDA125B62AA60073D730 /* Article.swift */; };
+		778FCDA525B62AC90073D730 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCDA425B62AC90073D730 /* Source.swift */; };
+		778FCDA825B62D590073D730 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCDA725B62D590073D730 /* UIColor+Extension.swift */; };
+		778FCDAB25B62DC00073D730 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCDAA25B62DC00073D730 /* UIStackView+Extension.swift */; };
+		778FCDB425B6BCF90073D730 /* Monitor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCDB325B6BCF90073D730 /* Monitor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +42,13 @@
 		778FCD7B25B587F10073D730 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		778FCD8025B589BC0073D730 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		778FCD8925B5B26A0073D730 /* startingCat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = startingCat.json; sourceTree = "<group>"; };
+		778FCD9925B629280073D730 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
+		778FCD9C25B62A710073D730 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		778FCDA125B62AA60073D730 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		778FCDA425B62AC90073D730 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		778FCDA725B62D590073D730 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		778FCDAA25B62DC00073D730 /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
+		778FCDB325B6BCF90073D730 /* Monitor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Monitor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +85,7 @@
 				7718277F25B579140027F08F /* App */,
 				778FCD6525B57A7E0073D730 /* Controllers */,
 				778FCD7A25B587D80073D730 /* CustomViews */,
+				778FCD9725B625F80073D730 /* Networking */,
 				778FCD6F25B57FD00073D730 /* Extensions */,
 				778FCD6425B57A5D0073D730 /* Resources */,
 			);
@@ -101,7 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				7718276C25B578AC0027F08F /* MainViewController.swift */,
+				778FCD9925B629280073D730 /* MainViewViewModel.swift */,
 				778FCD8325B58E4C0073D730 /* Splash */,
+				778FCD9F25B62A810073D730 /* Model */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -118,8 +135,10 @@
 		778FCD7025B57FF60073D730 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				778FCD7225B580110073D730 /* UIViewController+Extension.swift */,
 				778FCD7625B580870073D730 /* UIApplication+Extension.swift */,
+				778FCDA725B62D590073D730 /* UIColor+Extension.swift */,
+				778FCD7225B580110073D730 /* UIViewController+Extension.swift */,
+				778FCDAA25B62DC00073D730 /* UIStackView+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -127,6 +146,7 @@
 		778FCD7125B57FFD0073D730 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				778FCDB325B6BCF90073D730 /* Monitor+Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -154,6 +174,23 @@
 				778FCD8925B5B26A0073D730 /* startingCat.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		778FCD9725B625F80073D730 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		778FCD9F25B62A810073D730 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				778FCD9C25B62A710073D730 /* News.swift */,
+				778FCDA125B62AA60073D730 /* Article.swift */,
+				778FCDA425B62AC90073D730 /* Source.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,9 +274,16 @@
 				7718276B25B578AC0027F08F /* SceneDelegate.swift in Sources */,
 				778FCD8125B589BC0073D730 /* SplashPresenter.swift in Sources */,
 				778FCD7325B580110073D730 /* UIViewController+Extension.swift in Sources */,
+				778FCD9D25B62A710073D730 /* News.swift in Sources */,
+				778FCDB425B6BCF90073D730 /* Monitor+Extension.swift in Sources */,
+				778FCDA825B62D590073D730 /* UIColor+Extension.swift in Sources */,
+				778FCDAB25B62DC00073D730 /* UIStackView+Extension.swift in Sources */,
 				778FCD7C25B587F10073D730 /* GradientView.swift in Sources */,
+				778FCDA225B62AA60073D730 /* Article.swift in Sources */,
 				778FCD7725B580870073D730 /* UIApplication+Extension.swift in Sources */,
+				778FCD9A25B629280073D730 /* MainViewViewModel.swift in Sources */,
 				778FCD6D25B57F5F0073D730 /* SplashViewController.swift in Sources */,
+				778FCDA525B62AC90073D730 /* Source.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PFT2629W4Z;
 				INFOPLIST_FILE = "$(SRCROOT)/DigitalNomands/App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,7 +445,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PFT2629W4Z;
 				INFOPLIST_FILE = "$(SRCROOT)/DigitalNomands/App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
