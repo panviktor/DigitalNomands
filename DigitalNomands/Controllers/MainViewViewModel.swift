@@ -7,10 +7,26 @@
 
 import Combine
 import Network
+import Foundation
 
 class MainViewViewModel: ObservableObject {
+    struct State {
+        var articles: [Article] = []
+        var page: Int = 1
+        var canLoadNextPage = true
+    }
+    
+    private let defaults = UserDefaults.standard
     @Published private(set) var state = State()
     @Published private(set) var status: NWPath.Status = .satisfied
+    
+    private var downloadWasSuccessful: Bool {
+        get {
+            return defaults.object(forKey: "downloadWasSuccessful") as? Bool ?? false
+        } set (newValue) {
+            defaults.set(newValue, forKey: "downloadWasSuccessful")
+        }
+    }
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -22,6 +38,16 @@ class MainViewViewModel: ObservableObject {
     }
     
     func fetchNextPageIfPossible() {
+        guard status == .satisfied else {
+            //FIXME: - Add system cache
+            if downloadWasSuccessful {
+                // downloading from cache
+                print("downloading from cache")
+            }
+            // cache is empty
+            print("cache is empty")
+            return
+        }
         guard state.canLoadNextPage else { return }
         NewsAPI.searchRepos(page: state.page)
             .sink(receiveCompletion: onReceive,
@@ -42,11 +68,6 @@ class MainViewViewModel: ObservableObject {
         state.articles += batch
         state.page += 1
         state.canLoadNextPage = batch.count <= NewsAPI.maxPage
-    }
-    
-    struct State {
-        var articles: [Article] = []
-        var page: Int = 1
-        var canLoadNextPage = true
+        downloadWasSuccessful = true
     }
 }

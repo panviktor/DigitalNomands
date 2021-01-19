@@ -26,6 +26,7 @@
 		778FCDA825B62D590073D730 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCDA725B62D590073D730 /* UIColor+Extension.swift */; };
 		778FCDAB25B62DC00073D730 /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCDAA25B62DC00073D730 /* UIStackView+Extension.swift */; };
 		778FCDB425B6BCF90073D730 /* Monitor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCDB325B6BCF90073D730 /* Monitor+Extension.swift */; };
+		778FCDBA25B6C31E0073D730 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 778FCDB925B6C31E0073D730 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				778FCDBA25B6C31E0073D730 /* SDWebImage in Frameworks */,
 				778FCD6A25B57C320073D730 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,6 +213,7 @@
 			name = DigitalNomands;
 			packageProductDependencies = (
 				778FCD6925B57C320073D730 /* Lottie */,
+				778FCDB925B6C31E0073D730 /* SDWebImage */,
 			);
 			productName = DigitalNomands;
 			productReference = 7718276525B578AC0027F08F /* DigitalNomands.app */;
@@ -241,6 +244,7 @@
 			mainGroup = 7718275C25B578AC0027F08F;
 			packageReferences = (
 				778FCD6825B57C320073D730 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				778FCDB825B6C31E0073D730 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 7718276625B578AC0027F08F /* Products */;
 			projectDirPath = "";
@@ -489,6 +493,14 @@
 				minimumVersion = 3.1.9;
 			};
 		};
+		778FCDB825B6C31E0073D730 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -496,6 +508,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 778FCD6825B57C320073D730 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		778FCDB925B6C31E0073D730 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 778FCDB825B6C31E0073D730 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
