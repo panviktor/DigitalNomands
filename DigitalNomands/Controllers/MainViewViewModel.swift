@@ -9,7 +9,7 @@ import Combine
 import Network
 import Foundation
 
-class MainViewViewModel: ObservableObject {
+final class MainViewViewModel: ObservableObject {
     struct State {
         var articles: [Article] = []
         var page: Int = 1

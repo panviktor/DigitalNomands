@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class SplashViewController: UIViewController {
+final class SplashViewController: UIViewController {
     private let gradientView = GradientView(from: .topTrailing, to: .bottomLeading, startColor: #colorLiteral(red: 0.7882352941, green: 0.631372549, blue: 0.9411764706, alpha: 1), endColor: #colorLiteral(red: 0.4784313725, green: 0.6980392157, blue: 0.9215686275, alpha: 1))
     
     private let animationView: AnimationView = {
@@ -60,7 +60,7 @@ extension SplashViewController {
 
 // MARK: - SwiftUI
 import SwiftUI
-struct ActiveChatProvider: PreviewProvider {
+struct SplashViewControllerProvider: PreviewProvider {
     static var previews: some View {
         ContainerView()
             .edgesIgnoringSafeArea(.all)
