@@ -49,6 +49,6 @@ final class MainViewViewModel: ObservableObject {
     private func onReceive(_ batch: [Article]) {
         state.articles += batch
         state.page += 1
-        state.canLoadNextPage = batch.count <= NewsAPI.maxPage
+        state.canLoadNextPage = state.page <= NewsAPI.maxPage
     }
 }

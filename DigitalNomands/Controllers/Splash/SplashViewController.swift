@@ -54,7 +54,6 @@ extension SplashViewController {
             animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             animationView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-
     }
 }
 

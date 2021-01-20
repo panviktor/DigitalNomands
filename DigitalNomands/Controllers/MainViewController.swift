@@ -44,7 +44,6 @@ final class MainViewController: UITableViewController {
                 case .satisfied:
                     break
                 case .unsatisfied:
-                    //FIXME: - add element and button
                     self.tableView.reloadData()
                 case .requiresConnection:
                     break
@@ -65,6 +64,11 @@ extension MainViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseID, for: indexPath) as! ArticleCell
         cell.configure(with: dataSource[indexPath.row])
+        
+//        if indexPath.row == 20 - 1 {
+//            self.viewModel.fetchNextPageIfPossible()
+//        }
+        
         return cell
     }
     
@@ -77,9 +81,9 @@ extension MainViewController {
 }
 
 extension MainViewController: UITableViewDataSourcePrefetching {
-  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-    
-  }
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+    }
 }
 
 //MARK: - GUI
