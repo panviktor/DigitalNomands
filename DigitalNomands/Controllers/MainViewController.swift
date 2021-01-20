@@ -9,13 +9,14 @@ import UIKit
 import Combine
 
 final class MainViewController: UITableViewController {
-    private var viewModel = MainViewViewModel()
+    private var viewModel: MainViewViewModel!
     private var dataSource: [Article?] = []
     
     var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = MainViewViewModel(delegate: self)
         tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseID)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.prefetchDataSource = self
@@ -64,17 +65,12 @@ extension MainViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseID, for: indexPath) as! ArticleCell
         cell.configure(with: dataSource[indexPath.row])
-        
-//        if indexPath.row == 20 - 1 {
-//            self.viewModel.fetchNextPageIfPossible()
-//        }
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let url = dataSource[indexPath.row]?.url  ?? ""
+        let url = dataSource[indexPath.row]?.url ?? ""
         let detailVC = WKWebViewController(url: url)
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -82,7 +78,33 @@ extension MainViewController {
 
 extension MainViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        
+        if indexPaths.contains(where: isLoadingCell) {
+            viewModel.fetchNextPageIfPossible()
+        }
+    }
+}
+
+extension MainViewController: ArticlesViewModelDelegate {
+    func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
+        guard let newIndexPathsToReload = newIndexPathsToReload else {
+            tableView.isHidden = false
+            tableView.reloadData()
+            return
+        }
+        let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
+        tableView.reloadRows(at: indexPathsToReload, with: .automatic)
+    }
+}
+
+private extension MainViewController {
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        return indexPath.row >= dataSource.count
+    }
+    
+    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+        let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows ?? []
+        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+        return Array(indexPathsIntersection)
     }
 }
 
