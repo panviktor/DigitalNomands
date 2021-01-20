@@ -10,7 +10,7 @@ import Combine
 
 final class MainViewController: UITableViewController {
     private var viewModel = MainViewViewModel()
-    private var dataSource: [Article] = []
+    private var dataSource: [Article?] = []
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -31,7 +31,7 @@ final class MainViewController: UITableViewController {
             .sink { [weak self] items in
                 guard let self = self else { return }
                 self.dataSource = items.articles
-//                self.title = "\(items.page) of 5"
+                self.title = "\(items.page - 1) of 5"
                 self.tableView.reloadData()
             }
             .store(in: &subscriptions)
@@ -53,8 +53,6 @@ final class MainViewController: UITableViewController {
                 }
             }
             .store(in: &subscriptions)
-        
-       
     }
 }
 

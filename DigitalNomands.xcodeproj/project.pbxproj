@@ -12,6 +12,8 @@
 		7718276D25B578AC0027F08F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7718276C25B578AC0027F08F /* MainViewController.swift */; };
 		7718277225B578AD0027F08F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7718277125B578AD0027F08F /* Assets.xcassets */; };
 		7718277525B578AD0027F08F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7718277325B578AD0027F08F /* LaunchScreen.storyboard */; };
+		77386D8525B84ABF00B17BD8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77386D8425B84ABF00B17BD8 /* UIView+Extension.swift */; };
+		77386D8825B84B4300B17BD8 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77386D8725B84B4300B17BD8 /* Networking.swift */; };
 		7771E7F825B6F56000A3ABCF /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771E7F725B6F56000A3ABCF /* Date+Extension.swift */; };
 		7771E80325B6FA2100A3ABCF /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771E80225B6FA2100A3ABCF /* ArticleCell.swift */; };
 		7771E80625B6FBBA00A3ABCF /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771E80525B6FBBA00A3ABCF /* UILabel+Extension.swift */; };
@@ -41,6 +43,8 @@
 		7718277125B578AD0027F08F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7718277425B578AD0027F08F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7718277625B578AD0027F08F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77386D8425B84ABF00B17BD8 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		77386D8725B84B4300B17BD8 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		7771E7F725B6F56000A3ABCF /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		7771E80225B6FA2100A3ABCF /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		7771E80525B6FBBA00A3ABCF /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				7718277F25B579140027F08F /* App */,
+				77386D8C25B84B8C00B17BD8 /* ViewModels */,
 				778FCD6525B57A7E0073D730 /* Controllers */,
 				778FCD7A25B587D80073D730 /* CustomViews */,
 				778FCD9725B625F80073D730 /* Networking */,
@@ -112,6 +117,22 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		77386D8A25B84B7300B17BD8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7771E80225B6FA2100A3ABCF /* ArticleCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		77386D8C25B84B8C00B17BD8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				778FCD9925B629280073D730 /* MainViewViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		778FCD6425B57A5D0073D730 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,8 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				7718276C25B578AC0027F08F /* MainViewController.swift */,
-				7771E80225B6FA2100A3ABCF /* ArticleCell.swift */,
-				778FCD9925B629280073D730 /* MainViewViewModel.swift */,
+				77386D8A25B84B7300B17BD8 /* Cell */,
 				778FCD8325B58E4C0073D730 /* Splash */,
 				778FCD9F25B62A810073D730 /* Model */,
 			);
@@ -152,6 +172,7 @@
 				778FCDAA25B62DC00073D730 /* UIStackView+Extension.swift */,
 				7771E80525B6FBBA00A3ABCF /* UILabel+Extension.swift */,
 				7771E80825B6FBEA00A3ABCF /* UIFont+Extension..swift */,
+				77386D8425B84ABF00B17BD8 /* UIView+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -193,6 +214,7 @@
 		778FCD9725B625F80073D730 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				77386D8725B84B4300B17BD8 /* Networking.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -291,6 +313,7 @@
 				778FCD8125B589BC0073D730 /* SplashPresenter.swift in Sources */,
 				778FCD7325B580110073D730 /* UIViewController+Extension.swift in Sources */,
 				7771E7F825B6F56000A3ABCF /* Date+Extension.swift in Sources */,
+				77386D8825B84B4300B17BD8 /* Networking.swift in Sources */,
 				778FCD9D25B62A710073D730 /* News.swift in Sources */,
 				778FCDB425B6BCF90073D730 /* Monitor+Extension.swift in Sources */,
 				7771E80925B6FBEA00A3ABCF /* UIFont+Extension..swift in Sources */,
@@ -303,6 +326,7 @@
 				778FCD7725B580870073D730 /* UIApplication+Extension.swift in Sources */,
 				778FCD9A25B629280073D730 /* MainViewViewModel.swift in Sources */,
 				778FCD6D25B57F5F0073D730 /* SplashViewController.swift in Sources */,
+				77386D8525B84ABF00B17BD8 /* UIView+Extension.swift in Sources */,
 				778FCDA525B62AC90073D730 /* Source.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

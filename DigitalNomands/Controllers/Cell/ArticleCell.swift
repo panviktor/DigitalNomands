@@ -12,7 +12,7 @@ class ArticleCell: UITableViewCell {
     static var reuseID: String = "ArticleCell"
     
     //First layer
-    private let cardView: UIView = {
+    @UsesAutoLayout private var cardView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = #colorLiteral(red: 0.9098562598, green: 0.9044476748, blue: 0.914013803, alpha: 1)
         view.layer.cornerRadius = 10
@@ -20,17 +20,17 @@ class ArticleCell: UITableViewCell {
         return view
     }()
     
-    private let articleTitle: UILabel = {
+    @UsesAutoLayout private var articleTitle: UILabel = {
         let label = UILabel(text: "### #### ###### #### ##", font: .laoSangamMN20)
         label.numberOfLines = 3
         return label
     }()
     
-    private let articleImageView = UIImageView()
-    private let publishedAtLabel = UILabel(text: "####-##-## ##:##", font: .avenir15)
-    private let authorLabel = UILabel(text: "####### #####", font: .laoSangamMN18)
+    @UsesAutoLayout private var articleImageView = UIImageView()
+    @UsesAutoLayout private var publishedAtLabel = UILabel(text: "####-##-## ##:##", font: .avenir15)
+    @UsesAutoLayout private var authorLabel = UILabel(text: "####### #####", font: .laoSangamMN18)
     
-    private let blurView: UIView = {
+    @UsesAutoLayout private var blurView: UIView = {
         let view = UIView(frame: .zero)
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
@@ -50,7 +50,7 @@ class ArticleCell: UITableViewCell {
         return view
     }()
     
-    private let indicatorView: UIActivityIndicatorView = {
+    @UsesAutoLayout private var indicatorView: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView()
         indicatorView.isHidden = true
         return indicatorView
@@ -72,7 +72,6 @@ class ArticleCell: UITableViewCell {
             publishedAtLabel.text = article.normalPublishedDate
             authorLabel.text = article.author
             articleImageView.sd_setImage(with: URL(string: (article.urlToImage ?? "")))
-            articleImageView.contentMode = .scaleAspectFit
             blurView.isHidden = true
             indicatorView.stopAnimating()
         } else {
@@ -89,21 +88,13 @@ class ArticleCell: UITableViewCell {
 // MARK: - Setup constraints
 extension ArticleCell {
     private func setupConstraints() {
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        articleImageView.translatesAutoresizingMaskIntoConstraints = false
-        articleTitle.translatesAutoresizingMaskIntoConstraints = false
-        publishedAtLabel.translatesAutoresizingMaskIntoConstraints = false
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        articleImageView.backgroundColor = .clear
-        
         addSubview(cardView)
         NSLayoutConstraint.activate([
             cardView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             cardView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5),
             cardView.topAnchor.constraint(equalTo: self.topAnchor, constant: 2.5),
             cardView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -2.5),
-            cardView.heightAnchor.constraint(equalToConstant: 125),
+            cardView.heightAnchor.constraint(equalToConstant: 130),
         ])
         
         cardView.addSubview(articleImageView)
