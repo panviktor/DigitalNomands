@@ -43,11 +43,16 @@ final class MainViewController: UITableViewController {
                 guard let self = self else { return }
                 switch status  {
                 case .satisfied:
-                    break
+                    print(#line, "INTERNET")
+                    self.title = "Digital Nomands"
                 case .unsatisfied:
-                    self.tableView.reloadData()
+                    UIApplication.getTopViewController()?.showAlert(with: "No internet", and: "Check your phone")
+                    self.title = "No internet"
+                    print(#line, " NO INTERNET")
                 case .requiresConnection:
-                    break
+                    UIApplication.getTopViewController()?.showAlert(with: "Requires Connection", and: "Check your phone")
+                    self.title = "Requires Connection"
+                    print(#line,"NO INTERNET")
                 @unknown default:
                     break
                 }
