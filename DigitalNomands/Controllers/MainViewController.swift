@@ -70,6 +70,9 @@ extension MainViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let url = dataSource[indexPath.row]?.url  ?? ""
+        let detailVC = WKWebViewController(url: url)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

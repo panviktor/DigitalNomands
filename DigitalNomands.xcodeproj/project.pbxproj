@@ -18,6 +18,8 @@
 		7771E80325B6FA2100A3ABCF /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771E80225B6FA2100A3ABCF /* ArticleCell.swift */; };
 		7771E80625B6FBBA00A3ABCF /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771E80525B6FBBA00A3ABCF /* UILabel+Extension.swift */; };
 		7771E80925B6FBEA00A3ABCF /* UIFont+Extension..swift in Sources */ = {isa = PBXBuildFile; fileRef = 7771E80825B6FBEA00A3ABCF /* UIFont+Extension..swift */; };
+		777366BE25B862A500FDDB5E /* WKWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777366BD25B862A500FDDB5E /* WKWebViewController.swift */; };
+		777366C125B86C2400FDDB5E /* WKWebKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777366C025B86C2400FDDB5E /* WKWebKit+Extension.swift */; };
 		778FCD6A25B57C320073D730 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 778FCD6925B57C320073D730 /* Lottie */; };
 		778FCD6D25B57F5F0073D730 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCD6C25B57F5F0073D730 /* SplashViewController.swift */; };
 		778FCD7325B580110073D730 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778FCD7225B580110073D730 /* UIViewController+Extension.swift */; };
@@ -49,6 +51,8 @@
 		7771E80225B6FA2100A3ABCF /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		7771E80525B6FBBA00A3ABCF /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		7771E80825B6FBEA00A3ABCF /* UIFont+Extension..swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension..swift"; sourceTree = "<group>"; };
+		777366BD25B862A500FDDB5E /* WKWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewController.swift; sourceTree = "<group>"; };
+		777366C025B86C2400FDDB5E /* WKWebKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebKit+Extension.swift"; sourceTree = "<group>"; };
 		778FCD6C25B57F5F0073D730 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		778FCD7225B580110073D730 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		778FCD7625B580870073D730 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				7718276C25B578AC0027F08F /* MainViewController.swift */,
+				777366BD25B862A500FDDB5E /* WKWebViewController.swift */,
 				77386D8A25B84B7300B17BD8 /* Cell */,
 				778FCD8325B58E4C0073D730 /* Splash */,
 				778FCD9F25B62A810073D730 /* Model */,
@@ -173,6 +178,7 @@
 				7771E80525B6FBBA00A3ABCF /* UILabel+Extension.swift */,
 				7771E80825B6FBEA00A3ABCF /* UIFont+Extension..swift */,
 				77386D8425B84ABF00B17BD8 /* UIView+Extension.swift */,
+				777366C025B86C2400FDDB5E /* WKWebKit+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				778FCDA825B62D590073D730 /* UIColor+Extension.swift in Sources */,
 				778FCDAB25B62DC00073D730 /* UIStackView+Extension.swift in Sources */,
 				778FCD7C25B587F10073D730 /* GradientView.swift in Sources */,
+				777366C125B86C2400FDDB5E /* WKWebKit+Extension.swift in Sources */,
 				778FCDA225B62AA60073D730 /* Article.swift in Sources */,
 				7771E80325B6FA2100A3ABCF /* ArticleCell.swift in Sources */,
 				778FCD7725B580870073D730 /* UIApplication+Extension.swift in Sources */,
@@ -328,6 +335,7 @@
 				778FCD6D25B57F5F0073D730 /* SplashViewController.swift in Sources */,
 				77386D8525B84ABF00B17BD8 /* UIView+Extension.swift in Sources */,
 				778FCDA525B62AC90073D730 /* Source.swift in Sources */,
+				777366BE25B862A500FDDB5E /* WKWebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
