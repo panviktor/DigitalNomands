@@ -11,7 +11,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private var splashPresenter: SplashPresenterDescription? = SplashPresenter()
-    let delay: TimeInterval = 1
+    let delay: TimeInterval = 5
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
